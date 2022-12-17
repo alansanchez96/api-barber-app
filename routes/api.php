@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\AuthController;
+use App\Http\Controllers\BarberController;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,4 +24,7 @@ Route::post('/login', [AuthController::class, 'login']);
 
 Route::group(['middleware' => 'auth:sanctum'], function () {
     Route::get('/logout', [AuthController::class, 'logout']);
+    
+    Route::get('/barbers', [BarberController::class, 'getAllBarbers'])->name('api.getAllBarbers');
+    Route::get('/barbers/{id}', [BarberController::class, 'getBarber'])->name('api.getBarber');
 });
