@@ -11,10 +11,6 @@ class Barber extends Model
 {
     use HasFactory;
 
-    protected $cast = [
-        'id' => 'integer'
-    ];
-
     protected $guarded = [];
 
     public function cite()

@@ -20,6 +20,7 @@ class ServiceResource extends JsonResource
             'attributes' => [
                 'description' => $this->description,
                 'price' => $this->price,
+                'image' => 'storage/' . $this->image->url,
                 'status' => $this->status,
             ],
             'links' => [

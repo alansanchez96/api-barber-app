@@ -1,10 +1,11 @@
 <?php
 
-namespace App\Http\Resources\Barber;
+namespace App\Http\Resources\Cite;
 
+use App\Http\Resources\Barber\BarberResource;
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class BarberResource extends JsonResource
+class CiteResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -15,16 +16,18 @@ class BarberResource extends JsonResource
     public function toArray($request)
     {
         return [
-            'type' => 'barber',
+            'type' => 'cite',
             'id' => $this->resource->getRouteKey(),
             'attributes' => [
                 'name' => $this->name,
                 'surname' => $this->surname,
-                'image' => 'storage/' . $this->image->url,
-                'status' => $this->status,
+                'phone_number' => $this->phone_number,
+                'date' => $this->date,
+                'time' => $this->time,
+                'barber_id' => BarberResource::make($this->barber),
             ],
             'links' => [
-                'self' => route('api.getBarber', $this->resource)
+                'self' => route('api.getCite', $this->resource)
             ]
         ];
     }
