@@ -15,17 +15,23 @@ return new class extends Migration
     {
         Schema::create('cites', function (Blueprint $table) {
             $table->id();
-            $table->string('name', 60);
-            $table->string('surname', 60);
-            $table->string('phone_number', 20);
+
             $table->date('date');
             $table->time('time');
+            
             $table->unsignedBigInteger('barber_id');
             $table->foreign('barber_id')
                 ->references('id')
                 ->on('barbers')
                 ->onDelete('cascade')
                 ->onUpdate('cascade');
+            $table->unsignedBigInteger('client_id');
+            $table->foreign('client_id')
+                ->references('id')
+                ->on('clients')
+                ->onDelete('cascade')
+                ->onUpdate('cascade');
+
             $table->timestamps();
         });
     }

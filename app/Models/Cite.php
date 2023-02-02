@@ -22,4 +22,9 @@ class Cite extends Model
     {
         return $this->belongsToMany(Service::class);
     }
+
+    public function clients()
+    {
+        return $this->belongsTo(Client::class);
+    }
 }

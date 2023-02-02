@@ -16,9 +16,10 @@ return new class extends Migration
         Schema::create('barbers', function (Blueprint $table) {
             $table->id();
             $table->string('name', 60);
-            $table->string('surname', 60);
+            $table->string('lastname', 60);
             $table->enum('status', ['inactive', 'active'])->default('active');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
@@ -29,6 +30,8 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('barbers');
+        Schema::table('barbers', function (Blueprint $table) {
+            $table->dropSoftDeletes();
+        });
     }
 };

@@ -13,13 +13,14 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('services', function (Blueprint $table) {
+        Schema::create('clients', function (Blueprint $table) {
             $table->id();
-            $table->string('description', 60);
-            $table->decimal('price', 6, 2);
-            $table->enum('status', ['inactive', 'active'])->default('active');
+
+            $table->string('name', 60);
+            $table->string('lastname', 60);
+            $table->string('phone_number', 20);
+
             $table->timestamps();
-            $table->softDeletes();
         });
     }
 
@@ -30,8 +31,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::table('services', function (Blueprint $table) {
-            $table->dropSoftDeletes();
-        });
+        Schema::dropIfExists('clients');
     }
 };

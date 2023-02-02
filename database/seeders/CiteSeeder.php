@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\Cite;
+use App\Models\Client;
 use App\Models\Service;
 use Illuminate\Database\Seeder;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
